@@ -1,0 +1,311 @@
+/* Grunt concat file - 2020-05-21 */
+
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: #222;
+}
+
+body {
+  -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+  background-image: linear-gradient(top, #a7a7a7 0%, #e4e4e4 51%);
+  font-family: system-ui, -apple-system, -apple-system-font, "Segoe UI",
+    "Roboto", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 12px;
+  height: 100vh;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-right, 0px);
+}
+
+h1 {
+  font-weight: 100;
+}
+
+.main__content-section {
+  margin-bottom: 10rem;
+  padding-top: 2.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-bottom: 0rem;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.main__content-subsection {
+  margin-bottom: 10rem;
+  padding-top: 1.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-bottom: 0rem;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  border: 1px solid #efefef;
+  min-height: 947px;
+}
+
+.main__content-subsection > h2,
+h3.stylized {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  border-bottom: 1px solid #efefef;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  padding: 8px;
+  max-width: 187em;
+  margin: 0 auto;
+  border: 1px solid #efefef;
+  background-color: #fff;
+}
+
+.main__container__sections {
+  position: relative;
+}
+
+.window__InnerSize {
+  position: fixed;
+  bottom: 1rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+}
+
+@media only screen and (max-width: 920px) {
+  .main {
+    display: block;
+    width: 100%;
+    max-width: 187em;
+  }
+
+  .main > * {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+
+  .section--nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0.5rem;
+    padding-left: 0;
+    width: 100%;
+    height: 400px;
+    z-index: 1;
+  }
+
+  .main__content-header__sticky {
+    display: none;
+  }
+}
+
+.section--nav {
+  position: sticky;
+  height: 90vh;
+  top: 1.5rem;
+  align-self: start;
+  border-right: 1px solid #efefef;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.section--nav * {
+  background-color: transparent;
+  padding-bottom: 0.25rem;
+}
+
+.section--nav__overlay {
+  height: 100%;
+  width: 100%;
+  z-index: 7;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: all 500ms ease;
+}
+
+.overlay-content,
+character__summary {
+  position: relative;
+  margin-top: 3.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+.overlay-content ol {
+  height: 100%;
+  width: 100%;
+}
+
+.menu__button__openbtn {
+  position: fixed;
+  z-index: 2;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+
+.menu__button__closebtn {
+  visibility: visible;
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+  font-size: 1.5rem;
+  z-index: 8;
+}
+
+.menu__button__openbtn,
+.menu__button__closebtn {
+  color: #efefef;
+  border: 0px solid #efefef;
+  border-radius: 0.25rem;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.menu__button__openbtn:hover,
+.menu__button__closebtn:hover {
+  color: #111;
+}
+
+.menu__button__openbtn:focus,
+.menu__button__closebtn:focus {
+  color: #111;
+  outline: none;
+}
+
+.section--nav__overlay a {
+  font-size: 0.8rem;
+  text-decoration: none;
+  display: block;
+  padding: 0.125rem 0;
+  color: #ccc;
+  transition: all 500ms ease-out;
+}
+
+.section--nav li.active > a {
+  color: #333;
+  font-weight: 500;
+  padding-left: 0.75rem;
+  transition: all 200ms ease-in;
+}
+
+.section--nav li.unactive > a {
+  padding-left: 0px;
+  transition: all 500ms ease-out;
+}
+
+.section--nav .overlay-content a:hover,
+.section--nav .overlay-content a:focus {
+  padding-left: 0.45rem;
+  color: red;
+  background: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0.1) 0%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  border-radius: 2px;
+  transition: 500ms;
+}
+
+@media only screen and (max-width: 920px) {
+  .section--nav {
+    height: auto;
+  }
+
+  .section--nav * {
+    background-color: transparent;
+    padding-bottom: 0.1rem;
+  }
+
+  .section--nav__overlay {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+  }
+
+  .section--nav__overlay a {
+    font-size: 0.75rem;
+  }
+
+  .section--nav .overlay-content a:hover,
+  .section--nav .overlay-content a:focus {
+    background: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0.1) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+    border-radius: 2px;
+    transition: 500ms;
+  }
+}
+
+collapsible-section__container::-webkit-scrollbar {
+  width: 10px;
+}
+
+collapsible-section__container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey;
+  border-radius: 10px;
+}
+
+collapsible-section__container::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 10px;
+}
+
+collapsible-section__container::-webkit-scrollbar-thumb:hover {
+  background: #000;
+}
+
+collapsible-section__item--content::-webkit-scrollbar {
+  width: 10px;
+}
+
+collapsible-section__item--content::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey;
+  border-radius: 10px;
+}
+
+collapsible-section__item--content::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 10px;
+}
+
+collapsible-section__item--content::-webkit-scrollbar-thumb:hover {
+  background: #000;
+}
+
+.character__summary_active {
+  color: rgb(255, 255, 255);
+  background-color: black;
+  transition: all 0.251s;
+}
+
+.character__summary_unactive {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  transition: all 0.1s;
+}
+
+.k100_button {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  width: 50px;
+}
